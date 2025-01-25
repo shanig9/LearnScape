@@ -107,10 +107,6 @@ LearnScape is a Python-based tool designed to provide personalized insights into
 
 Contributions are welcome!
 
-**License:**
-
-[Choose a license]
-
 **Contact:**
 
-[Your Name/Email (Optional)]
+shanigupta404@gmail.com 
