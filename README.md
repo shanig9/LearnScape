@@ -25,12 +25,7 @@ LearnScape is a Python-based tool designed to provide personalized insights into
     *   seaborn (`pip install seaborn`)
     *   scikit-learn (`pip install scikit-learn`) (If you want to use the ML part of the code)
 
-2.  **Installation (Optional - if you make it a package):**
-    ```bash
-    pip install learnscape  # Or how ever you name your package
-    ```
-
-3.  **Usage:**
+2.  **Usage:**
 
     1.  Prepare your data: You will need two CSV files:
         *   `user_data.csv`: Contains individual student quiz data with columns like ID, submission time, accuracy, quiz topic, difficulty, etc.
@@ -44,13 +39,13 @@ LearnScape is a Python-based tool designed to provide personalized insights into
 
     3.  Follow the prompts: The script will prompt you to enter the ID of the student you want to analyze or type 'exit' to quit.
 
-4. **Example Data:**
+3. **Example Data:**
     Provide example data in the repository so users can quickly test the code.
 
 **Data Format (Example user_data.csv):**
 
 ```csv
 id,submitted_at,quiz_created_at,accuracy,quiz_topic,quiz_difficulty_level,quiz_name
-1,2024-10-27 10:00:00,2024-10-27 09:30:00,85%,"Mathematics","Medium","Math Quiz 1"
-2,2024-10-27 11:00:00,2024-10-27 10:30:00,60,"Science","Easy","Science Quiz 1"
+336494,2024-10-27 10:00:00,2024-10-27 09:30:00,85%,"Mathematics","Medium","Math Quiz 1"
+336495,2024-10-27 11:00:00,2024-10-27 10:30:00,60,"Science","Easy","Science Quiz 1"
 ...
