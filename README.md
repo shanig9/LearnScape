@@ -1,51 +1,116 @@
 # LearnScape
 LearnScape provides personalized insights into student performance, highlighting strengths, weaknesses, and areas for improvement, creating a visual map of the learning journey.
+
 # LearnScape: Personalized Learning Insights
 
 **Description:**
 
-LearnScape is a Python-based tool designed to provide personalized insights into student performance. By analyzing quiz data, LearnScape identifies key trends, highlights strengths and weaknesses with creative labels, and offers actionable recommendations for improved learning outcomes. It visualizes learning progress, empowering students and educators with data-driven insights to optimize learning strategies.
+LearnScape is a Python-based tool designed to provide personalized insights into student performance. It analyzes quiz data, highlights strengths and weaknesses, and offers actionable recommendations.
 
 **Key Features:**
 
-*   **Performance Analysis:** Analyzes student performance based on accuracy, quiz topics, difficulty levels, and time taken.
-*   **Creative Insights:** Highlights strengths and weaknesses with engaging labels like "Areas of Expertise" and "Opportunities for Growth," providing a more personalized and motivating experience.
-*   **Actionable Recommendations:** Suggests specific topics, question types, and difficulty levels for students to focus on to improve their learning.
-*   **Visualizations:** Creates informative visualizations, including histograms of accuracy, box plots of performance by topic, scatter plots of time taken vs. accuracy, and count plots of difficulty and accuracy levels, and quiz submission hour of day.
-*   **Flexible Data Handling:** Supports different ID column names and handles both string and numeric accuracy values.
-*   **Robust Error Handling:** Includes comprehensive error handling to gracefully manage file errors, missing columns, and other potential issues.
-*   **Two Dataset Support:** Can analyze user-specific performance data in comparison to a separate overall performance dataset.
+*   Performance Analysis
+*   Creative Insights
+*   Actionable Recommendations
+*   Visualizations
+*   Flexible Data Handling
+*   Robust Error Handling
+*   Two Dataset Support
+*   **Jupyter Notebook Compatibility:** Can be run directly in Jupyter Notebook or similar interactive Python environments.
 
 **Getting Started:**
 
 1.  **Prerequisites:**
-    *   Python 3.x
-    *   pandas (`pip install pandas`)
-    *   matplotlib (`pip install matplotlib`)
-    *   seaborn (`pip install seaborn`)
-    *   scikit-learn (`pip install scikit-learn`) (If you want to use the ML part of the code)
 
-2.  **Usage:**
-
-    1.  Prepare your data: You will need two CSV files:
-        *   `user_data.csv`: Contains individual student quiz data with columns like ID, submission time, accuracy, quiz topic, difficulty, etc.
-        *   `question_data.csv`: Contains information about the questions themselves, including topic, difficulty, and type.
-
-    2.  Run the script:
+    *   **Python 3.7+:** LearnScape is compatible with Python 3.7 and later versions. Check your version with `python --version` (or `python3 --version`).
+    *   **Required Packages:** Install required packages using pip:
 
         ```bash
-        python your_script_name.py  # Replace your_script_name.py with the name of your Python file
+        pip install pandas matplotlib seaborn scikit-learn
         ```
 
-    3.  Follow the prompts: The script will prompt you to enter the ID of the student you want to analyze or type 'exit' to quit.
+2.  **Usage (Running from Source):**
 
-3. **Example Data:**
-    Provide example data in the repository so users can quickly test the code.
+    Since LearnScape is currently a set of Python scripts, you can run it directly from the source code.
 
-**Data Format (Example user_data.csv):**
+    **Option 1: Running the main script:**
 
-```csv
-id,submitted_at,quiz_created_at,accuracy,quiz_topic,quiz_difficulty_level,quiz_name
-336494,2024-10-27 10:00:00,2024-10-27 09:30:00,85%,"Mathematics","Medium","Math Quiz 1"
-336495,2024-10-27 11:00:00,2024-10-27 10:30:00,60,"Science","Easy","Science Quiz 1"
-...
+    1.  Place `main.py`, `analysis.py`, `recommendations.py`, `persona.py`, and `utils.py` in the same directory.
+    2.  Prepare your data: Create `user_data.csv` and `question_data.csv` (see "Data Format" below).
+    3.  Open a terminal in the directory containing the Python files and run:
+
+        ```bash
+        python main.py
+        ```
+
+    **Option 2: Running module directly:**
+    1. Place `main.py`, `analysis.py`, `recommendations.py`, `persona.py`, and `utils.py` inside the `learnscape` directory and create `__init__.py` in the same directory.
+    2. Prepare your data: Create `user_data.csv` and `question_data.csv` (see "Data Format" below).
+    3. Open a terminal in the directory *containing* `learnscape` directory and run:
+
+        ```bash
+        python -m learnscape.analysis
+        ```
+
+    **Option 3: Running in Jupyter Notebook:**
+
+    1.  Place all Python files (`main.py`, etc.) and your data files (`user_data.csv`, `question_data.csv`) in the same directory.
+    2.  Open a new Jupyter Notebook in that directory.
+    3.  Import the necessary functions and call them within the notebook cells. For example:
+
+        ```python
+        import pandas as pd
+        from main import main #If you want to run the main function
+        from analysis import generate_user_insights
+        from recommendations import generate_user_recommendations
+        from persona import analyze_student_persona
+
+        user_df = pd.read_csv('user_data.csv')
+        question_df = pd.read_csv('question_data.csv')
+
+        # Example usage of analysis function
+        insights = generate_user_insights(user_df, 1, 'id')
+        print(insights)
+
+        #Example to run main function
+        main()
+        ```
+
+**Data Format:**
+
+*   **user_data.csv:**
+
+    ```csv
+    id,submitted_at,quiz_created_at,accuracy,quiz_topic,quiz_difficulty_level,quiz_name
+    1,2024-10-27 10:00:00,2024-10-27 09:30:00,85%,"Mathematics","Medium","Math Quiz 1"
+    2,2024-10-27 11:00:00,2024-10-27 10:30:00,60,"Science","Easy","Science Quiz 1"
+    ...
+    ```
+
+*   **question_data.csv:**
+
+    ```csv
+    question_id,question_difficulty_level,question_topic,question_type
+    1,"Medium","Mathematics","Multiple Choice"
+    2,"Easy","Science","True/False"
+    ...
+    ```
+
+**Additional Notes:**
+
+*   **File Organization:** For better organization, consider creating a `learnscape` directory and placing all `.py` files inside it (as described in the previous response about packaging). This is good practice even if you are not distributing it as a package.
+*   **Error Handling:** The code includes robust error handling to catch common issues like missing files or incorrect data formats. Pay attention to the error messages if you encounter problems.
+*   **Customization:** You can easily customize the analysis and recommendations by modifying the code in `analysis.py`, `recommendations.py`, and `persona.py`.
+*   **Data Exploration:** Before using LearnScape, it's recommended to explore your data using pandas to understand its structure and identify any potential cleaning needs.
+
+**Contributing:**
+
+Contributions are welcome!
+
+**License:**
+
+[Choose a license]
+
+**Contact:**
+
+[Your Name/Email (Optional)]
